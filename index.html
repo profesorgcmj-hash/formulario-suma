@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario: Suma de Dos Números</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1.2rem;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn-sumar {
+      background-color: #007bff;
+      color: white;
+      margin-right: 0.5rem;
+    }
+    .btn-limpiar {
+      background-color: #6c757d;
+      color: white;
+    }
+    .resultado {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Formulario: Suma de Dos Números</h2>
+    <label for="numeroA">Número A:</label>
+    <input type="number" id="numeroA" placeholder="Ingrese un número">
+
+    <label for="numeroB">Número B:</label>
+    <input type="number" id="numeroB" placeholder="Ingrese otro número">
+
+    <div>
+      <button class="btn-sumar" onclick="sumar()">Sumar</button>
+      <button class="btn-limpiar" onclick="limpiar()">Limpiar</button>
+    </div>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function sumar() {
+      const a = parseFloat(document.getElementById('numeroA').value) || 0;
+      const b = parseFloat(document.getElementById('numeroB').value) || 0;
+      const resultado = a + b;
+      document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
+    }
+
+    function limpiar() {
+      document.getElementById('numeroA').value = '';
+      document.getElementById('numeroB').value = '';
+      document.getElementById('resultado').innerText = '';
+    }
+  </script>
+</body>
+</html>
