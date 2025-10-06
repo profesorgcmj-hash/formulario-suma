@@ -1,100 +1,149 @@
 
+---
+
+```html
+<!-- Declaración del tipo de documento: HTML5 -->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> <!-- Lenguaje del documento en español -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario: Suma de Dos Números</title>
+  <meta charset="UTF-8"> <!-- Codificación de caracteres (permite usar tildes y ñ) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adaptación a móviles -->
+  <title>Formulario: Suma de Dos Números</title> <!-- Título que se muestra en la pestaña del navegador -->
+
+  <!-- Bloque de estilos CSS internos -->
   <style>
+    /* Estilo general del cuerpo de la página */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f7fa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+      font-family: Arial, sans-serif; /* Fuente principal */
+      background-color: #f5f7fa; /* Color de fondo claro */
+      display: flex; /* Activa Flexbox para centrar el contenido */
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+      height: 100vh; /* Altura igual al alto visible de la pantalla */
+      margin: 0; /* Elimina márgenes por defecto */
     }
+
+    /* Tarjeta contenedora del formulario */
     .card {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 320px;
-      text-align: center;
+      background-color: #fff; /* Fondo blanco */
+      padding: 2rem; /* Espacio interno */
+      border-radius: 12px; /* Bordes redondeados */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      width: 320px; /* Ancho fijo */
+      text-align: center; /* Centra texto dentro del contenedor */
     }
+
+    /* Título del formulario */
     h2 {
-      color: #333;
+      color: #333; /* Color gris oscuro */
     }
+
+    /* Estilos para las etiquetas (labels) */
     label {
-      display: block;
-      text-align: left;
-      margin-top: 1rem;
-      font-weight: bold;
+      display: block; /* Cada label ocupa su propia línea */
+      text-align: left; /* Alineación a la izquierda */
+      margin-top: 1rem; /* Separación superior */
+      font-weight: bold; /* Texto en negrita */
     }
+
+    /* Campos de entrada (inputs) */
     input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
+      width: 100%; /* Ocupa todo el ancho disponible */
+      padding: 8px; /* Espacio interno */
+      margin-top: 4px; /* Separación del label */
+      border: 1px solid #ccc; /* Borde gris claro */
+      border-radius: 8px; /* Bordes redondeados */
+      font-size: 1rem; /* Tamaño del texto */
     }
+
+    /* Estilos comunes para todos los botones */
     button {
-      margin-top: 1.2rem;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
+      margin-top: 1.2rem; /* Separación superior */
+      padding: 10px 16px; /* Espaciado interno */
+      border: none; /* Sin borde */
+      border-radius: 8px; /* Bordes redondeados */
+      font-size: 1rem; /* Tamaño del texto */
+      cursor: pointer; /* Cambia el cursor al pasar el mouse */
     }
+
+    /* Botón principal: sumar */
     .btn-sumar {
-      background-color: #007bff;
-      color: white;
-      margin-right: 0.5rem;
+      background-color: #007bff; /* Azul */
+      color: white; /* Texto blanco */
+      margin-right: 0.5rem; /* Separación respecto al botón limpiar */
     }
+
+    /* Botón secundario: limpiar */
     .btn-limpiar {
-      background-color: #6c757d;
-      color: white;
+      background-color: #6c757d; /* Gris oscuro */
+      color: white; /* Texto blanco */
     }
+
+    /* Resultado de la suma */
     .resultado {
-      margin-top: 1.5rem;
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: #007bff;
+      margin-top: 1.5rem; /* Separación superior */
+      font-weight: bold; /* Texto en negrita */
+      font-size: 1.2rem; /* Tamaño del texto mayor */
+      color: #007bff; /* Azul para resaltar */
     }
   </style>
 </head>
+
 <body>
+  <!-- Contenedor principal de la tarjeta -->
   <div class="card">
-    <h2>Formulario: Suma de Dos Números</h2>
+    <h2>Formulario: Suma de Dos Números</h2> <!-- Título principal -->
+
+    <!-- Primer número -->
     <label for="numeroA">Número A:</label>
     <input type="number" id="numeroA" placeholder="Ingrese un número">
 
+    <!-- Segundo número -->
     <label for="numeroB">Número B:</label>
     <input type="number" id="numeroB" placeholder="Ingrese otro número">
 
+    <!-- Botones de acción -->
     <div>
+      <!-- Al hacer clic ejecutan funciones JavaScript -->
       <button class="btn-sumar" onclick="sumar()">Sumar</button>
       <button class="btn-limpiar" onclick="limpiar()">Limpiar</button>
     </div>
 
+    <!-- Espacio donde se mostrará el resultado -->
     <div class="resultado" id="resultado"></div>
   </div>
 
+  <!-- Bloque de código JavaScript -->
   <script>
+    // Función que realiza la suma de los dos números
     function sumar() {
-      const a = parseFloat(document.getElementById('numeroA').value) || 0;
-      const b = parseFloat(document.getElementById('numeroB').value) || 0;
+      // Obtener y convertir los valores de los inputs a número decimal
+      const a = parseFloat(document.getElementById('numeroA').value) || 0; // Si está vacío, se usa 0
+      const b = parseFloat(document.getElementById('numeroB').value) || 0; // Lo mismo para B
+
+      // Realizar la suma
       const resultado = a + b;
+
+      // Mostrar el resultado dentro del div con id "resultado"
       document.getElementById('resultado').innerText = `Resultado: ${resultado}`;
     }
 
+    // Función que limpia los campos del formulario
     function limpiar() {
+      // Vacía los campos de entrada
       document.getElementById('numeroA').value = '';
       document.getElementById('numeroB').value = '';
+
+      // Borra el texto del resultado
       document.getElementById('resultado').innerText = '';
     }
   </script>
 </body>
 </html>
+```
+
+---
+
+
+
+
